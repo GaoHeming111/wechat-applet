@@ -1,0 +1,16 @@
+// 将 \\n 转化为\n
+var format = function(text) {
+  var reg = getRegExp('\\\\n', 'g');
+
+  return text && text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+}
+
+// 筛选短评的数量
+var limit = function(arr, index) {
+  return arr.slice(0, index);
+}
+
+module.exports = {
+  format: format,
+  limit: limit
+}

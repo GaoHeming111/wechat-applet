@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="header">
+    <v-epsoide class="epsoide" index="{{classicData.index}}" />
+    <view class="like-container">
+      <v-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+      <v-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </v-button>
+    </view>
+  </view>
+  <v-movie hidden="{{classicData.type !== 100}}" img="{{classicData.image}}" content="{{classicData.content}}" />
+  <v-music wx:if="{{classicData.type === 200}}" img="{{classicData.image}}" content="{{classicData.content}}" src="{{classicData.url}}" />
+  <v-essay hidden="{{classicData.type !== 300}}" img="{{classicData.image}}" content="{{classicData.content}}" />
+  <v-navi class="navi" bind:left="onNext" bind:right="onPrevious" title="{{classicData.title}}" first="{{first}}" latest="{{latest}}" />
+</view>
+
+<!-- wx:if="{{}}" 小括号内为真 对应的组件会显示 每次呈现的时候他都会渲染，每次隐藏的时候，他都会销毁 -->
+<!-- hidden="{{}}" 如果频繁切换，用hidden好一些，因为他会一次性进行渲染，不进行销毁，相当于display:none -->
